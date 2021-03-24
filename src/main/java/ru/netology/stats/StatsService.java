@@ -11,7 +11,11 @@ public class StatsService {
     }
 
     public long calculateAverageSum(long[] values) {
-        long average = calculateSum(values) / values.length;
+        long sum = 0;
+        for (long value : values) {
+            sum += value;
+        }
+        long average = sum / values.length;
 
         return average;
     }
@@ -24,7 +28,9 @@ public class StatsService {
                 maxSales = values[i];
                 maxMonth = i + 1;
             }
+
         }
+
         return maxMonth;
     }
 
@@ -53,14 +59,14 @@ public class StatsService {
     }
 
     public long calculateMonthsHigherAverage(long[] values) {
-        long higherLow = 0;
+        long monthHigher = 0;
 
         for (long value : values) {
 
             if (value > calculateAverageSum(values)) {
-                higherLow += 1;
+                monthHigher += 1;
             }
         }
-        return higherLow;
+        return monthHigher;
     }
 }
