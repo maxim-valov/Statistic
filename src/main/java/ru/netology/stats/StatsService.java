@@ -49,9 +49,11 @@ public class StatsService {
 
     public long calculateMonthsLowAverage(long[] values) {
         long monthsLow = 0;
+        long average = calculateAverageSum(values);
+
         for (long value : values) {
 
-            if (value < calculateAverageSum(values)) {
+            if (value < average) {
                 monthsLow += 1;
             }
         }
@@ -60,10 +62,11 @@ public class StatsService {
 
     public long calculateMonthsHigherAverage(long[] values) {
         long monthHigher = 0;
+        long average = calculateAverageSum(values);
 
         for (long value : values) {
 
-            if (value > calculateAverageSum(values)) {
+            if (value > average) {
                 monthHigher += 1;
             }
         }
